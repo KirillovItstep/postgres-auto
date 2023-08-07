@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New auto</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+</head>
+<body>
+<h3> Добавить автомобиль</h3>
+<form th:method="POST" th:action="@{/auto/save}" enctype="multipart/form-data">
+    <input type="text" name="name"/>
+    <div id="images">
+        Рисунок: <br/><input type="file" name="files">
+        <input type="button" value="Добавить еще один" th:onclick="'javascript:addInput()'"/><br/>
+    </div>
+    <input type="submit" value="Добавить"/>
+</form>
+
+<ul th:each = "auto : ${autos}">
+    <li>
+        <span th:text="${auto.name}"></span>
+        <ul th:each="image: ${auto.images}">
+            <li><img th:src="${'data:image/png; base64,'+ image}"/></li>
+        </ul>
+    </li>
+</ul>
+<script th:inline="javascript">
+    function addInput(){
+        console.log('ok')
+        var input = $("<input/>", {
+            type: "file",
+            name: "files"
+        });
+        $("#images").append(input);
+        $("#images").append('</br>');
+    }
+</script>
+</body>
+</html>

@@ -24,7 +24,7 @@ public class ImageController {
     @PostMapping("/save")
     public String save(@RequestParam("file") MultipartFile file) throws IOException {
         imageService.save(file);
-        return "redirect:/";
+        return "redirect:/image";
     }
 
     @GetMapping({"/",""})

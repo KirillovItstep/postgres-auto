@@ -27,7 +27,7 @@ import java.util.List;
         return imageRepository.save(toImageEntity(file));
     }
 
-    private Image toImageEntity(MultipartFile file) throws IOException {
+    public Image toImageEntity(MultipartFile file) throws IOException {
         Image image = new Image();
         image.setName(file.getOriginalFilename());
         image.setBytes(file.getBytes());

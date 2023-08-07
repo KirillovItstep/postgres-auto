@@ -23,8 +23,8 @@ import java.util.List;
     }
 
     @Transactional
-    public Auto save(MultipartFile file) throws IOException {
-        return autoRepository.save(toImageEntity(file));
+    public Auto save(Auto auto) throws IOException {
+        return autoRepository.save(auto);
     }
 
     private Auto toImageEntity(MultipartFile file) throws IOException {

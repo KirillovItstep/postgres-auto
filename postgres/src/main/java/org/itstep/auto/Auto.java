@@ -2,6 +2,7 @@ package org.itstep.auto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
 import org.itstep.image.Image;
@@ -22,5 +23,15 @@ public class Auto {
     private String name;
 
     @OneToMany(mappedBy = "auto", cascade = CascadeType.ALL)
+    @EqualsAndHashCode.Exclude
     private Set<Image> images;
+
+
+    @Override
+    public String toString() {
+        return "Auto{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

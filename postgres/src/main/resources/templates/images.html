@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Images</title>
+</head>
+<body>
+<h3> Добавить рисунок</h3>
+<form th:method="POST" th:action="@{image/save}" enctype="multipart/form-data">
+    Рисунок: <input type="file" name="file"><br/>
+    <input type="submit" value="Загрузить"/>
+</form>
+<ul th:each = "image : ${images}">
+    <li>
+        <img th:src="${'data:image/png; base64, '+image}"/>
+    </li>
+</ul>
+</body>
+</html>

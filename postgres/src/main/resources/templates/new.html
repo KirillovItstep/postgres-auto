@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New auto</title>
+</head>
+<body>
+<h3> Добавить рисунок</h3>
+<form th:method="POST" th:action="@{/save}" enctype="multipart/form-data">
+    Рисунок: <input type="file" name="file1"><br/><br/>
+    <input type="submit" value="Загрузить"/>
+</form>
+
+<ul th:each = "auto : ${images}">
+    <li th:text="${auto.name}"></li>
+</th:each>
+</ul>
+</body>
+</html>
